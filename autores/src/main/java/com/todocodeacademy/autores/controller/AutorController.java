@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/autores")
@@ -42,5 +43,16 @@ public class AutorController {
     @GetMapping("/autor-por-nombre/{nombreCompleto}")
     public Autor traerPorNombre(@PathVariable String nombreCompleto,@RequestParam String nacionalidad){
         return service.traerPorNombreYNacionalidad(nombreCompleto,nacionalidad);
+    }
+
+    @PutMapping("/agregar-isbn/{isbn}")
+    public void agregarIsbn(@PathVariable String isbn,
+                            @RequestParam String nombreCompleto,
+                            @RequestParam String nacionalidad){
+        Autor autor = service.traerPorNombreYNacionalidad(nombreCompleto,nacionalidad);
+        Set<String> isbns = autor.getListaIdsLibros();
+        isbns.add(isbn);
+        autor.setListaIdsLibros(isbns);
+        service.crear(autor);
     }
 }

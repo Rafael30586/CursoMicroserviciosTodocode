@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.List;
+
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,5 +22,5 @@ public class Autor {
     private LocalDate fechaNacimiento;
     private String nacionalidad;
     @ElementCollection
-    private List<String> listaIdsLibros;
+    private Set<String> listaIdsLibros;
 }
