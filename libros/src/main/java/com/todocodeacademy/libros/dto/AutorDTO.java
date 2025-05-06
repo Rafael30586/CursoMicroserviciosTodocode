@@ -1,6 +1,9 @@
 package com.todocodeacademy.libros.dto;
 
+import jakarta.persistence.Embeddable;
+
+@Embeddable
 public class AutorDTO {
-    private String nombre;
-    private String nacinalidad;
+    private String nombreCompleto;
+    private String nacionalidad;
 }

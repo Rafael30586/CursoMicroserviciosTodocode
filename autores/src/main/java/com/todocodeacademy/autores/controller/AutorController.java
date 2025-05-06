@@ -38,4 +38,9 @@ public class AutorController {
     public Autor modificar(@PathVariable Long id, @RequestBody Autor autor){
         return service.editar(id, autor);
     }
+
+    @GetMapping("/autor-por-nombre/{nombreCompleto}")
+    public Autor traerPorNombre(@PathVariable String nombreCompleto,@RequestParam String nacionalidad){
+        return service.traerPorNombreYNacionalidad(nombreCompleto,nacionalidad);
+    }
 }

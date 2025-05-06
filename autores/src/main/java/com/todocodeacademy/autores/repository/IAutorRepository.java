@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IAutorRepository extends JpaRepository<Autor,Long> {
+
+    public Autor findByNombreCompletoAndNacionalidad(String nombreCompleto, String nacionalidad);
 }

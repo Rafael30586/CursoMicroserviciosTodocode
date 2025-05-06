@@ -1,6 +1,7 @@
 package com.todocodeacademy.libros.model;
 
 import com.todocodeacademy.libros.dto.AutorDTO;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 
 import jakarta.persistence.Id;
@@ -21,6 +22,7 @@ public class Libro {
     private String titulo;
     private int anioPublicacion;
     private String descripcion;
+    @ElementCollection
     private List<AutorDTO> autores;
 
 }

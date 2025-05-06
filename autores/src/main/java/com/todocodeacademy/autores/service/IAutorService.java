@@ -15,4 +15,6 @@ public interface IAutorService {
     public void eliminarPorId(Long id);
 
     public Autor editar(Long id,Autor autor);
+
+    public Autor traerPorNombreYNacionalidad(String nombreCompleto, String nacionalidad);
 }

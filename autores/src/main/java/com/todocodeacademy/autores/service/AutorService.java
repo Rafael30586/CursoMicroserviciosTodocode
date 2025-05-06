@@ -38,4 +38,9 @@ public class AutorService implements IAutorService{
         this.crear(autor);
         return repository.findById(id).get();
     }
+
+    @Override
+    public Autor traerPorNombreYNacionalidad(String nombreCompleto, String nacionalidad) {
+        return repository.findByNombreCompletoAndNacionalidad(nombreCompleto, nacionalidad);
+    }
 }
