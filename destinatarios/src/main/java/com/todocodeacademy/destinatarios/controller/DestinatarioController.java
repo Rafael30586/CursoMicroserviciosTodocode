@@ -1,5 +1,6 @@
 package com.todocodeacademy.destinatarios.controller;
 
+import com.todocodeacademy.destinatarios.dto.EnvioDTO;
 import com.todocodeacademy.destinatarios.model.Destinatario;
 import com.todocodeacademy.destinatarios.service.IDestinatarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,10 @@ public class DestinatarioController {
     @PutMapping("/{id}")
     public Destinatario modificar(@PathVariable Long id, @RequestBody Destinatario destinatario){
         return service.modificar(id,destinatario);
+    }
+
+    @GetMapping("/envios/{idDestinatario}")
+    public List<EnvioDTO> traerEnviosPorDestinatario(@PathVariable Long idDestinatario){
+        return service.traerEnviosPorDestinatario(idDestinatario);
     }
 }

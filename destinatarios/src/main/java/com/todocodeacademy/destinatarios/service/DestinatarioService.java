@@ -1,18 +1,21 @@
 package com.todocodeacademy.destinatarios.service;
 
+import com.todocodeacademy.destinatarios.dto.EnvioDTO;
 import com.todocodeacademy.destinatarios.model.Destinatario;
 import com.todocodeacademy.destinatarios.repository.IDestinatarioRepository;
+import com.todocodeacademy.destinatarios.repository.IEnvioClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class DestinatarioService implements IDestinatarioService{
+public class DestinatarioService implements IDestinatarioService {
 
     @Autowired
     private IDestinatarioRepository repository;
-
+    @Autowired
+    private IEnvioClient envioClient;
 
     @Override
     public List<Destinatario> traerTodos() {
@@ -39,4 +42,10 @@ public class DestinatarioService implements IDestinatarioService{
     public void crear(Destinatario destinatario) {
         repository.save(destinatario);
     }
+
+    @Override
+    public List<EnvioDTO> traerEnviosPorDestinatario(Long idDestinatario) {
+        return envioClient.traerEnviosPorDestinatario(idDestinatario);
+    }
+
 }
