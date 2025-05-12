@@ -32,7 +32,7 @@ public class CityService implements ICityService{
         cityDTO.setState(city.getState());
         cityDTO.setHotelList(hotelsAPI.getHotelsByCityId(city.getCity_id()));
 
-        createException();
+        //createException();
 
         return cityDTO;
     }
