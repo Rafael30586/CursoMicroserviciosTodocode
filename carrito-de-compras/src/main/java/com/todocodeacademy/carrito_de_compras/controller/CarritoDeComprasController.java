@@ -36,7 +36,18 @@ public class CarritoDeComprasController {
     @PutMapping("/{id}")
     public CarritoDeCompras modificar(@PathVariable Long id,
                                       @RequestBody CarritoDeCompras carritoDeCompras){
-
         return service.modificar(id,carritoDeCompras);
+    }
+
+    @PutMapping("/agregar-producto")
+    public CarritoDeCompras agregarProducto(@RequestParam Long idProducto,
+                                            @RequestParam Long idCarritoDeCompras){
+        return service.agregarProducto(idProducto,idCarritoDeCompras);
+    }
+
+    @PutMapping("/quitar-producto")
+    public CarritoDeCompras quitarProducto(@RequestParam Long idProducto,
+                                           @RequestParam Long idCarritoDeCompras){
+        return service.quitarProducto(idProducto,idCarritoDeCompras);
     }
 }

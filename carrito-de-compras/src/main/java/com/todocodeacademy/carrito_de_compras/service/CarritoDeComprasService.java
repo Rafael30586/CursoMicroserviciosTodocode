@@ -46,11 +46,31 @@ public class CarritoDeComprasService implements ICarritoDeComprasService{
     @Override
     public CarritoDeCompras agregarProducto(Long idProducto,Long idCarritoDeCompras) {
         CarritoDeCompras carritoDeCompras = this.traerPorId(idCarritoDeCompras);
-        List<Long> listaProductos = new ArrayList<>();
+        List<Long> listaProductos = carritoDeCompras.getListaProductos();
+
         listaProductos.add(idProducto);
+
         carritoDeCompras.setPrecioTotal(carritoDeCompras.getPrecioTotal()+productoClient.traerPorId(idProducto).getPrecioIndividual());
         carritoDeCompras.setListaProductos(listaProductos);
         this.crear(carritoDeCompras);
+
+        return this.traerPorId(idCarritoDeCompras);
+    }
+
+    @Override
+    public CarritoDeCompras quitarProducto(Long idProducto, Long idCarritoDeCompras) {
+        CarritoDeCompras carritoDeCompras = this.traerPorId(idCarritoDeCompras);
+        List<Long> listaProductos = carritoDeCompras.getListaProductos();
+
+        for(Long p : listaProductos){
+            if(p.equals(idProducto)){
+                listaProductos.remove(listaProductos.indexOf(p));
+                carritoDeCompras.setPrecioTotal(carritoDeCompras.getPrecioTotal()-productoClient.traerPorId(idProducto).getPrecioIndividual());
+                break;
+            }
+        }
+
         return null;
     }
+
 }

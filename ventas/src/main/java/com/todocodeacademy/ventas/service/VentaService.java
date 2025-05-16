@@ -1,6 +1,8 @@
 package com.todocodeacademy.ventas.service;
 
+import com.todocodeacademy.ventas.dto.CarritoDeComprasDTO;
 import com.todocodeacademy.ventas.model.Venta;
+import com.todocodeacademy.ventas.repository.ICarritoDeComprasClient;
 import com.todocodeacademy.ventas.repository.IVentaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,8 @@ public class VentaService implements IVentaService{
 
     @Autowired
     private IVentaRepository repository;
+    @Autowired
+    private ICarritoDeComprasClient carritoDeComprasClient;
 
     @Override
     public void crear(Venta venta) {
@@ -37,5 +41,11 @@ public class VentaService implements IVentaService{
     public Venta modificar(Long id, Venta venta) {
         this.crear(venta);
         return repository.findById(id).get();
+    }
+
+    @Override
+    public CarritoDeComprasDTO traerCarrito(Long idVenta) {
+        Venta venta = this.traerPorId(idVenta);
+        return carritoDeComprasClient.traerPorId(venta.getCarritoId());
     }
 }

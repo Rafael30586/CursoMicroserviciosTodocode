@@ -1,5 +1,6 @@
 package com.todocodeacademy.ventas.controller;
 
+import com.todocodeacademy.ventas.dto.CarritoDeComprasDTO;
 import com.todocodeacademy.ventas.model.Venta;
 import com.todocodeacademy.ventas.service.IVentaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,10 @@ public class VentaController {
     @PutMapping("/{id}")
     public Venta modificar(@PathVariable Long id,@RequestBody Venta venta){
         return service.modificar(id,venta);
+    }
+
+    @GetMapping("/carrito-de-compras/{idVenta}")
+    public CarritoDeComprasDTO traerCarrito(@PathVariable Long idVenta){
+        return service.traerCarrito(idVenta);
     }
 }
