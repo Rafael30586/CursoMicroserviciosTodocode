@@ -1,4 +1,4 @@
-package com.todocodeacademy.productos.model;
+package com.todocodeacademy.carrito_de_compras.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,13 +10,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter @Setter
 @Entity
-@Table(name="productos")
-public class Producto {
+@Table(name="carritos_de_compras")
+public class CarritoDeCompras {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codigo;
-    private String nombre;
-    private String marca;
-    @Column(name = "precio_individual")
-    private Double precioIndividual;
+    private Long id;
+    @Column("precio_total")
+    private Double precioTotal;
 }
