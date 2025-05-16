@@ -16,4 +16,6 @@ public interface ICarritoDeComprasService{
     public CarritoDeCompras modificar(Long id, CarritoDeCompras carritoDeCompras);
 
     public void crear(CarritoDeCompras carritoDeCompras);
+
+    public CarritoDeCompras agregarProducto(Long idProducto,Long idCarritoDeCompras);
 }

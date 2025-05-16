@@ -30,7 +30,7 @@ public class ProductoService implements IProductoService {
 
     @Override
     public Producto modificar(Long id, Producto producto) {
-        this.crearProducto(producto);
+        this.crear(producto);
         return repository.findById(id).get();
     }
 

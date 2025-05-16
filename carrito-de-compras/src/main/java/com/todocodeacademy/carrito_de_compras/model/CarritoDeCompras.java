@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter @Setter
@@ -15,6 +17,8 @@ public class CarritoDeCompras {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column("precio_total")
+    @Column(name="precio_total")
     private Double precioTotal;
+    @ElementCollection
+    private List<Long> listaProductos;
 }
