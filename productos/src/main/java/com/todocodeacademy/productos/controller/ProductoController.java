@@ -1,0 +1,36 @@
+package com.todocodeacademy.productos.controller;
+
+import com.todocodeacademy.productos.model.Producto;
+import com.todocodeacademy.productos.service.IProductoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/productos")
+public class ProductoController {
+
+    @Autowired
+    private IProductoService service;
+
+    @GetMapping("/")
+    public List<Producto> traerTodos(){
+        return service.traerTodos();
+    }
+
+    @GetMapping("/{id}")
+    public Producto traerPorId(@PathVariable Long id){
+        return service.traerPorId(id);
+    }
+
+    @PostMapping("/")
+    public void crear(@RequestBody Producto producto){
+        service.crear(producto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminarPorId(@PathVariable Long id){
+        service.eliminarPorId(id);
+    }
+}
