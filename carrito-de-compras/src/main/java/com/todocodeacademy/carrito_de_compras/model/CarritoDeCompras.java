@@ -20,5 +20,6 @@ public class CarritoDeCompras {
     @Column(name="precio_total")
     private Double precioTotal;
     @ElementCollection
+    @Column(name="lista_productos")
     private List<Long> listaProductos;
 }
