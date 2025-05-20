@@ -17,6 +17,7 @@ public class Venta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Temporal(TemporalType.DATE)
     private LocalDate fecha;
     @Column(name="carrito_id")
     private Long carritoId;

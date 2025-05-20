@@ -3,6 +3,7 @@ package com.todocodeacademy.productos.controller;
 import com.todocodeacademy.productos.model.Producto;
 import com.todocodeacademy.productos.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,8 @@ public class ProductoController {
 
     @Autowired
     private IProductoService service;
+    @Value("${server.port}")
+    private int server_port;
 
     @GetMapping("/")
     public List<Producto> traerTodos(){
@@ -21,6 +24,7 @@ public class ProductoController {
 
     @GetMapping("/{id}")
     public Producto traerPorId(@PathVariable Long id){
+        System.out.println("Puerto: "+server_port);
         return service.traerPorId(id);
     }
 

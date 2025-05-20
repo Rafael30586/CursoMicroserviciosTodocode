@@ -1,5 +1,6 @@
 package com.todocodeacademy.carrito_de_compras.model;
 
+import com.todocodeacademy.carrito_de_compras.dto.CantidadProductoDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,5 +22,5 @@ public class CarritoDeCompras {
     private Double precioTotal;
     @ElementCollection
     @Column(name="lista_productos")
-    private List<Long> listaProductos;
+    private List<CantidadProductoDTO> listaProductos;
 }

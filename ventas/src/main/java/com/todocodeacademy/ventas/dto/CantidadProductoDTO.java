@@ -5,12 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter @Setter
-public class CarritoDeComprasDTO {
-    private Double precioTotal;
-    private List<CantidadProductoDTO> listaProductos;
+public class CantidadProductoDTO {
+    private Long productoId;
+    private int cantidadProducto;
 }

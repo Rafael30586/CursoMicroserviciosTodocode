@@ -40,14 +40,16 @@ public class CarritoDeComprasController {
     }
 
     @PutMapping("/agregar-producto")
-    public CarritoDeCompras agregarProducto(@RequestParam Long idProducto,
-                                            @RequestParam Long idCarritoDeCompras){
-        return service.agregarProducto(idProducto,idCarritoDeCompras);
+    public CarritoDeCompras agregarProducto(@RequestParam("id-producto") Long idProducto,
+                                            @RequestParam("cantidad-producto") int cantidadProducto,
+                                            @RequestParam("id-carrito-de-compras") Long idCarritoDeCompras){
+        return service.agregarProducto(idProducto,cantidadProducto,idCarritoDeCompras);
     }
 
     @PutMapping("/quitar-producto")
-    public CarritoDeCompras quitarProducto(@RequestParam Long idProducto,
-                                           @RequestParam Long idCarritoDeCompras){
-        return service.quitarProducto(idProducto,idCarritoDeCompras);
+    public String quitarProducto(@RequestParam Long idProducto,
+                                 @RequestParam Long idCarritoDeCompras){
+        service.quitarProducto(idProducto,idCarritoDeCompras);
+        return "Producto removido correctamente";
     }
 }
